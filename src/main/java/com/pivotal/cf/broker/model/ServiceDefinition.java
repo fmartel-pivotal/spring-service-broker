@@ -22,11 +22,6 @@ public class ServiceDefinition {
 
 	@NotEmpty
 	@JsonSerialize
-	@JsonProperty("id")
-	private String id;
-	
-	@NotEmpty
-	@JsonSerialize
 	@JsonProperty("name")
 	private String name;
 	
@@ -57,24 +52,24 @@ public class ServiceDefinition {
 	@JsonProperty("requires")
 	private List<String> requires = new ArrayList<String>();
 	
-	public ServiceDefinition(String id, String name, String description, boolean bindable, List<Plan> plans) {
-		this.id = id;
+	public ServiceDefinition(String name, String description, boolean bindable, List<Plan> plans) {
 		this.name = name;
 		this.description = description;
 		this.bindable = bindable;
 		this.setPlans(plans);
 	}
 
-	public ServiceDefinition(String id, String name, String description, boolean bindable, List<Plan> plans,
-			List<String> tags, Map<String,Object> metadata, List<String> requires) {
-		this(id, name, description, bindable, plans);
+	public ServiceDefinition(String name, String description, boolean bindable, List<Plan> plans,
+			List<String> tags, Map<String,Object> metadata) {
+		this(name, description, bindable, plans);
 		setTags(tags);
 		setMetadata(metadata);
-		setRequires(requires);
 	}
-	
-	public String getId() {
-		return id;
+
+	public ServiceDefinition(String name, String description, boolean bindable, List<Plan> plans,
+			List<String> tags, Map<String,Object> metadata, List<String> requires) {
+		this(name, description, bindable, plans, tags, metadata);
+		setRequires(requires);
 	}
 
 	public String getName() {

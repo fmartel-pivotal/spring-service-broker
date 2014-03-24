@@ -19,11 +19,6 @@ public class Plan {
 
 	@NotEmpty
 	@JsonSerialize
-	@JsonProperty("id")
-	private String id;
-	
-	@NotEmpty
-	@JsonSerialize
 	@JsonProperty("name")
 	private String name;
 	
@@ -36,21 +31,16 @@ public class Plan {
 	@JsonProperty("metadata")
 	private Map<String,Object> metadata = new HashMap<String,Object>();
 	
-	public Plan(String id, String name, String description) {
-		this.id = id;
+	public Plan(String name, String description) {
 		this.name = name;
 		this.description = description;
 	}
 
-	public Plan(String id, String name, String description, Map<String,Object> metadata) {
-		this(id, name, description);
+	public Plan(String name, String description, Map<String,Object> metadata) {
+		this(name, description);
 		setMetadata(metadata);
 	}
 	
-	public String getId() {
-		return id;
-	}
-
 	public String getName() {
 		return name;
 	}
